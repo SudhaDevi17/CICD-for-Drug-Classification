@@ -1,4 +1,4 @@
-import pandas as pd
+
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestClassifier
@@ -9,6 +9,7 @@ from sklearn.metrics import accuracy_score, f1_score
 import matplotlib.pyplot as plt
 from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
 import skops.io as sio
+import pandas as pd
 
 drug_df = pd.read_csv("Data/drug200.csv")
 drug_df = drug_df.sample(frac=1)
