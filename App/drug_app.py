@@ -2,13 +2,11 @@ import gradio as gr
 import skops.io as sio
 import os
 
+print(os.getcwd())
+
 # Load the model
 model_path = "Model/drug_pipeline.skops"
 try:
-    if not os.path.exists(model_path):
-        print(os.getcwd())
-        raise FileNotFoundError(f"Model file not found: {model_path}")
-
     trusted_types = sio.get_untrusted_types()
     pipe = sio.load(model_path, trusted=trusted_types)
 
@@ -18,6 +16,7 @@ except Exception as e:
     print(f"Error loading model: {e}")
     pipe = None
 
+# Your training code here
 def predict_drug(age, sex, blood_pressure, cholesterol, na_to_k_ratio):
     """Predict drugs based on patient features.
 
