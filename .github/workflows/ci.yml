@@ -55,4 +55,9 @@ jobs:
           EMAIL: ${{ secrets.USER_EMAIL }}
         run: |
           set -e
-          make update-branch USER_NAME=$NAME USER_EMAIL=$EMAIL
+          git config --global user.name $NAME
+          git config --global user.email $EMAIL
+          if ! git diff-index --quiet HEAD --; then
+              git commit -am "Update with new results"
+          fi
+          git push --force origin HEAD:update
