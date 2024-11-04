@@ -11,22 +11,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
           node-version: '20'
-      - uses: iterative/setup-cml@v2
+      - name: Set up CML
+        uses: iterative/setup-cml@v2
         with:
           node-version: '20'
       - name: Install Packages
-        run: make install
+        run: |
+          set -e
+          make install
       - name: Format
-        run: make format
+        run: |
+          set -e
+          make format
       - name: Train
-        run: make train
+        run: |
+          set -e
+          make train
       - name: Evaluation
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: make eval
+        run: |
+          set -e
+          make eval
 
   update-branch:
     runs-on: ubuntu-latest
@@ -35,4 +45,6 @@ jobs:
         env:
           NAME: ${{ secrets.USER_NAME }}
           EMAIL: ${{ secrets.USER_EMAIL }}
-        run: make update-branch USER_NAME=$NAME USER_EMAIL=$EMAIL
+        run: |
+          set -e
+          make update-branch USER_NAME=$NAME USER_EMAIL=$EMAIL
