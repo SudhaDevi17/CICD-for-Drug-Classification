@@ -1,9 +1,17 @@
 import gradio as gr
 import skops.io as sio
+import os
 
 # Load the model
+model_path = "Model/drug_pipeline.skops"
 try:
-    pipe = sio.load("./Model/drug_pipeline.skops", trusted=True)
+    if not os.path.exists(model_path):
+        print(os.getcwd())
+        raise FileNotFoundError(f"Model file not found: {model_path}")
+
+    trusted_types = sio.get_untrusted_types()
+    pipe = sio.load(model_path, trusted=trusted_types)
+
     if not hasattr(pipe, 'predict'):
         raise AttributeError("The loaded model does not have a 'predict' method.")
 except Exception as e:
