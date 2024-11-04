@@ -7,7 +7,6 @@ print(os.getcwd())
 # Load the model
 model_path = "Model/drug_pipeline.skops"
 try:
-
     trusted_types = sio.get_untrusted_types()
     pipe = sio.load(model_path, trusted=trusted_types)
 
