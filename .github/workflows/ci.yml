@@ -60,4 +60,4 @@ jobs:
           if ! git diff-index --quiet HEAD --; then
               git commit -am "Update with new results"
           fi
-          git push --force origin HEAD:main
+          git push --force origin HEAD:update
