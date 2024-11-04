@@ -3,4 +3,4 @@ skops
 matplotlib
 pandas
 gradio==4.44.1
-urllib3<2.0
+urllib3>=1.26,<3.0
