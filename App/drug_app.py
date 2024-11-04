@@ -2,13 +2,16 @@ import gradio as gr
 import skops.io as sio
 import os
 
+from numpy.lib.function_base import piecewise
+
 print(os.getcwd())
 
 # Load the model
 model_path = "Model/drug_pipeline.skops"
 try:
-    trusted_types = sio.get_untrusted_types()
-    pipe = sio.load(model_path, trusted=trusted_types)
+    # trusted_types = sio.get_untrusted_types()
+    # pipe = sio.load(model_path, trusted=trusted_types)
+    pipe = sio.load(model_path, trusted=True)
 
     if not hasattr(pipe, 'predict'):
         raise AttributeError("The loaded model does not have a 'predict' method.")
