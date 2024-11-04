@@ -55,4 +55,6 @@ with open("Results/metrics.txt", "w") as outfile:
     plt.savefig("Results/model_results.png", dpi=120)
 
 sio.dump(pipe, "Model/drug_pipeline.skops")
-sio.load("Model/drug_pipeline.skops", trusted=True)
+#sio.load("Model/drug_pipeline.skops", trusted=True)
+trusted_types = sio.get_untrusted_types()
+sio.load("Model/drug_pipeline.skops", trusted=trusted_types)
