@@ -7,16 +7,16 @@ from numpy.lib.function_base import piecewise
 print(os.getcwd())
 
 # Load the model
-model_path = "Model/drug_pipeline.skops"
+model_path = "./Model/drug_pipeline.skops"
 try:
     # trusted_types = sio.get_untrusted_types()
     # pipe = sio.load(model_path, trusted=trusted_types)
 
     # Generate and review the list of untrusted types
-    untrusted_types = sio.get_untrusted_types(file="Model/drug_pipeline.skops")
+    untrusted_types = sio.get_untrusted_types(file="./Model/drug_pipeline.skops")
     print(untrusted_types)
     # Load the model with the reviewed list of trusted types
-    pipe = sio.load("Model/drug_pipeline.skops", trusted=untrusted_types)
+    pipe = sio.load("./Model/drug_pipeline.skops", trusted=untrusted_types)
 
     if not hasattr(pipe, 'predict'):
         raise AttributeError("The loaded model does not have a 'predict' method.")
