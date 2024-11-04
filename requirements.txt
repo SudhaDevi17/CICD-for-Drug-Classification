@@ -2,5 +2,5 @@ scikit-learn
 skops
 matplotlib
 pandas
-gradio==3.34.0
+gradio==4.16.0
 urllib3>=1.26,<3.0
