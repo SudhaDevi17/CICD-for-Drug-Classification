@@ -59,7 +59,7 @@ sio.dump(pipe, "Model/drug_pipeline.skops")
 
 
 # Generate and review the list of untrusted types
-untrusted_types = sio.get_untrusted_types("Model/drug_pipeline.skops")
-
+untrusted_types = sio.get_untrusted_types(file = "Model/drug_pipeline.skops")
+print(untrusted_types)
 # Load the model with the reviewed list of trusted types
 model = sio.load("Model/drug_pipeline.skops", trusted=untrusted_types)
